@@ -16,6 +16,7 @@ app = Flask(__name__)
 # ✅ Only CORS configuration needed (remove @cors_headers decorators)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
+
 # CORS decorator for all routes
 def cors_headers(f):
     @wraps(f)
