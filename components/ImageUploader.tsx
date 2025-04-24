@@ -83,7 +83,8 @@ export default function ImageUploader({ onImageUpload }: ImageUploaderProps) {
       formData.append('image', blob, 'image.jpg');
 
       // Make sure the URL has a trailing slash before 'predict'
-      const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+      // For production, ensure this is set in Render's environment variables
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://127.0.0.1:8080';
       const url = baseUrl.endsWith('/') ? `${baseUrl}predict` : `${baseUrl}/predict`;
 
       console.log('Sending request to:', url); // Debug log
