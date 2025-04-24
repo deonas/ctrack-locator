@@ -1,12 +1,11 @@
-from flask import Flask, request, jsonify, make_response
-from flask_cors import CORS
+from flask import Flask, request, jsonify
+from flask_cors import CORS  # Keep only this CORS solution
 import tensorflow as tf
 import numpy as np
 import io
 from PIL import Image
 import os
 import logging
-from functools import wraps
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -14,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
-# Completely disable CORS by allowing all origins
+# ✅ Only CORS configuration needed (remove @cors_headers decorators)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # CORS decorator for all routes
