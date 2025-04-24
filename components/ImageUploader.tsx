@@ -86,10 +86,7 @@ export default function ImageUploader({ onImageUpload }: ImageUploaderProps) {
       // For production, ensure this is set in Render's environment variables
       // From:
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
-const url = baseUrl.endsWith('/') ? `${baseUrl}predict` : `${baseUrl}/predict`;
-
-// To: (use relative path)
-const url = '/api/predict';  // Now calls your Next.js API route
+const url = '/api/predict';// Now calls your Next.js API route
 
       console.log('Sending request to:', url); // Debug log
 
