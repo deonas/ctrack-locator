@@ -84,8 +84,12 @@ export default function ImageUploader({ onImageUpload }: ImageUploaderProps) {
 
       // Make sure the URL has a trailing slash before 'predict'
       // For production, ensure this is set in Render's environment variables
-      const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://127.0.0.1:8080';
-      const url = baseUrl.endsWith('/') ? `${baseUrl}predict` : `${baseUrl}/predict`;
+      // From:
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL || '';
+const url = baseUrl.endsWith('/') ? `${baseUrl}predict` : `${baseUrl}/predict`;
+
+// To: (use relative path)
+const url = '/api/predict';  // Now calls your Next.js API route
 
       console.log('Sending request to:', url); // Debug log
 
