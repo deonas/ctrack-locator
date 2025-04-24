@@ -10,8 +10,7 @@
 		"pipdeps": "pip install -r app/api/requirements.txt",
 		"build": "next build && next export",
 		"lint": "next lint",
-  		"start": "serve out -p $PORT",
-		"start": "concurrently \"python app/api/server.py\" \"next start -p $PORT\""
+  		"start": "serve out -p $PORT"
 		
 	},
 	"dependencies": {
