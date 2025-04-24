@@ -1,22 +1,14 @@
 export const config = {
   api: {
-    bodyParser: false, // Disable default parsing to handle file uploads
+    bodyParser: false, // Required for file uploads
   },
 };
 
 export default async function handler(req, res) {
   try {
-    // Forward the request to Flask (running on same service)
-    const flaskResponse = await fetch('http://localhost:8080/predict', {
-      method: 'POST',
-      body: req.body,
-      headers: {
-        'Content-Type': req.headers['content-type'],
-      },
-    });
-
-    const data = await flaskResponse.json();
-    res.status(200).json(data);
+    // Process image here or forward to Flask
+    const result = await processImage(req);
+    res.status(200).json(result);
   } catch (error) {
     res.status(500).json({ error: 'Failed to process image' });
   }
