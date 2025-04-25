@@ -15,11 +15,24 @@ import { useToast } from '@/hooks/use-toast';
 import { campusLocations } from '@/lib/campus-data';
 
 // 🔁 Dynamically import components to avoid SSR issues
-const ImageUploader = dynamic(() => import('@/components/ImageUploader'), { ssr: false });
-const LocationSelector = dynamic(() => import('@/components/LocationSelector'), { ssr: false });
-const NavigationMap = dynamic(() => import('@/components/NavigationMap'), { ssr: false });
+const ImageUploader = dynamic(() => import('@/components/ImageUploader').then(mod => mod.default), { 
+  ssr: false,
+  loading: () => <p>Loading...</p>
+});
+
+const LocationSelector = dynamic(() => import('@/components/LocationSelector').then(mod => mod.default), { 
+  ssr: false,
+  loading: () => <p>Loading...</p>
+});
+
+const NavigationMap = dynamic(() => import('@/components/NavigationMap').then(mod => mod.default), { 
+  ssr: false,
+  loading: () => <p>Loading...</p>
+});
 
 type LocationState = 'detection' | 'destination' | 'navigation';
+
+// ... rest of your component code remains the same
 
 export default function LocationDetection() {
   const [locationState, setLocationState] = useState<LocationState>('detection');
