@@ -10,7 +10,7 @@ interface ImageUploaderProps {
   onImageUpload: (imageUrl: string, detectedLocation: string) => void;
 }
 
-export function ImageUploader({ onImageUpload }: ImageUploaderProps) {
+export default function ImageUploader({ onImageUpload }: ImageUploaderProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
   const { toast } = useToast();
